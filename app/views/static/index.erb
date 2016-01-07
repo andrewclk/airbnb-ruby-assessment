@@ -1,2 +1,43 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div class="airbnb"> 
+<div class="row">
+<h2 class="adjust-top"> </h2>
+</div>
+<% if session[:user_id] == nil %>
+<div class="row">
+  <div class="columns large-12">
+  <h1 class="newfont">
+   AirB2B
+  </h1>
+  </div>
+  <div class="columns large-12">
+<h3 class="newfont2 white">Don't ask, just search,rent and sleep well!</h3>
+  </div>
+</div>
+<% end %>
+
+ <% if session[:user_id] == nil %>
+<div class="row panel">
+<div class=" column large-6 panel white">
+<h2 class="newfont4">Sign up for an account!</h2>
+<form method=post action=/user/signup>
+  <input type=text placeholder="Name" name="user[name]"><br>
+  <input type=text placeholder="Email" name="user[email]"><br>
+  <input type=password placeholder="Password" name="user[password]"></br>
+  <input type=submit class="submit button" value="Sign up">
+</form>
+</div>
+<div class=" column large-6 panel white">
+<h2 class="newfont4">Login here!</h2>
+<form method=post action=/user/login>
+  <input type=text placeholder="Email" name="user[email]"><br>
+  <input type=password placeholder="Password" name="user[password]"></br>
+  <input type=submit class="alert button" value="Login!">
+</form>
+</div>
+</div>
+<% end %>
+<div class="row">
+  <div class="columns large-12">
+  <h4>   </h4>
+</div></div>
+</div>

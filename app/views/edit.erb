@@ -1,0 +1,41 @@
+<div class="row panel white">
+<% if @property %>
+<h3> <%=@property.name %> </h3>
+<h4> <%=@property.info %></h4>
+<h4> <%=@property.price %></h4>
+
+<h2 class="newfont3"> Edit: </h2>
+<form method="post" action=/questions/<%= @property.id %>/edit>
+	<input name="_method" value="patch" type="hidden">
+	<input type="hidden" id=<%= @property.id %> name="property_id" value=<%= @property.id %> />
+	<input type=text placeholder="Edit your property name here..." name="name"><br>
+	<input type=text placeholder="Edit your address and info here..." name="info"><br>
+	<input type=text placeholder="Edit your price here..." name="price"><br>
+	<input type=submit class="success button" value="Edit!">
+</form>
+
+<% elsif @booking %>
+<h3> <%=@booking.booking_date %> </h3>
+<h3> <%=@booking.booking_info %> </h3>
+
+<h2 class="newfont3"> Edit: </h2>
+<form method="post" action=/bookings/<%= @booking.id %>/edit>
+	<input name="_method" value="patch" type="hidden">
+	<input type="hidden" id=<%= @booking.id %> name="booking_id" value=<%= @booking.id %> />
+	<input type=text placeholder="Update your booking date here..." name="date"><br>
+	<input type=text placeholder="Update your booking info here..." name="info"><br>
+	<input type=submit class="success button" value="Edit!">
+</form>
+
+<% elsif @comment %>
+<h3> <%=@comment.comment %> </h3>
+<h2 class="newfont3"> Edit: </h2>
+<form method="post" action=/comments/<%= @comment.id %>/edit>
+	<input name="_method" value="patch" type="hidden">
+	<input type="hidden" id=<%= @comment.id %> name="comment_id" value=<%= @comment.id %> />
+	<input type=text placeholder="Edit your comment here..." name="comment"><br>
+	<input type=submit class="success button" value="Edit!">
+</form>
+
+<% end %>
+</div>

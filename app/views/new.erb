@@ -1,0 +1,14 @@
+
+
+<div class="columns large-12 panel white col-height">
+    <h2 class="newfont4"> Book for <%= @property.name %> </h2>
+      <form method=post action="/bookings/new">
+        <input type="hidden" id=<%= @property.id %> name="property_id" value=<%= @property.id %> />
+        <div class="newfont6"> Booking Date: </div>
+        <input type=text placeholder="DD-MM-YYYY" name="date"><br>
+        <div class="newfont6"> Booking Details: </div>
+        <input type=text placeholder="How many person? How many nights" name="info"><br>
+        <input type=submit class="large success button" value="Book!">
+      </form>
+</div>
+

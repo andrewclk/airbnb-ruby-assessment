@@ -1,0 +1,67 @@
+<div id="login-box" class="login-popup">
+  
+  <div class="row panel">
+  	<div class=" column large-9">
+  	<h4 class="newfont4">Please sign up or login first to continue!</h4>
+  	</div>
+  	<div class=" column large-3">
+  	<a href="#" class="close"><button class="tiny right alert button"> X </button></a>
+  	</div>
+		<div class=" column large-6 panel white">
+		<h2>Sign up for an account!</h2>
+		<form method=post action=/signup>
+			<input type=text placeholder="Name" name="user[name]"><br>
+		  <input type=text placeholder="Email" name="user[email]"><br>
+		  <input type=password placeholder="Password" name="user[password]"></br>
+		  <input type=submit class="button" value="Sign up">
+		</form>
+		</div>
+		<div class=" column large-6 panel white">
+		<h2>Login here!</h2>
+		<form method=post action=/login>
+		  <input type=text placeholder="Email" name="user[email]"><br>
+		  <input type=password placeholder="Password" name="user[password]"></br>
+		  <input type=submit class="alert button" value="Login!">
+		</form>
+		</div>
+		</div>
+</div>
+
+<div class="row panel">
+	<div class=" column large-6 panel white">
+		<a href="/properties">
+	   <button class="large success button middle"> Manage My Properties </button></a>
+	</div>
+	<div class=" column large-6 panel white">
+	<a href="/booking">
+	   <button class="large success button middle">  Manage My Booking </button></a>
+	</div>
+</div>
+
+
+<div class="row panel">
+	<div class="column large-12">
+		<h1 class="newfont4">Book an affordable place for your vacation here!</h1></div>
+		<% @properties.reverse.each do |p| %>
+		<div class="column large-12">
+		<div class=" column large-2 panel left white">
+		<form method=get action=/properties/<%= p.id %>/show>
+		<input type="hidden" id=<%= p.id %> name="property_id" value=<%= p.id %> />
+    <button class="info button"><img src="https://cdn2.iconfinder.com/data/icons/lil-buildings/102/Building-2-512.png" value=<%=p.id %> name="property_id"></button><br>
+  	</form>
+	
+	</div>
+		<div class=" column large-10 panel white">
+			<h2> <%= p.name %></h2>
+			 <% if p.user_id != session[:user_id] %>
+			<form method=get action=/bookings/new>
+     		<input type="hidden" id=<%= p.id %> name="property_id" value=<%= p.id %> />
+    		<button class="small button right"> Book Now! </button><br>
+  		</form>
+  			<% end %>
+		  <h4> <%= p.info %></h4>
+		  <h2 class="right newfont4"> <%= p.price %> MYR </h2>
+	</div>
+	</div>
+		<% end %>
+</div>

@@ -1,0 +1,46 @@
+<div class="row panel">
+  <div class="columns large-12">
+  <h1 class="newfont4">My Properties</h1>
+  </div>
+  <% @properties.each do |p| %>
+    <% if p.user_id == session[:user_id] %>
+  <div class="columns large-12 panel white col-height">
+  <h2> <%= p.name %></h2>
+  <h4> <%= p.info %></h4>
+  <h2 class="newfont4"> <%= p.price %> MYR </h2>
+
+  <div class="column left large-6">
+     <form method=get action=/properties/<%= p.id %>/edit>
+     <input type="hidden" id=<%= p.id %> name="property_id" value=<%= p.id %> />
+    <button class="small success button right"> Edit </button><br>
+  </form>
+  </div>
+    <div class="column right large-6">
+    <form method=post action=/properties/<%= p.id %>/delete>
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="hidden" id=<%= p.id %> name="property_id" value=<%= p.id %> />
+    <button class="small alert button"> Delete </button><br>
+  </form>
+  </div>
+    </div>
+   <% end %>
+
+   <% end %>
+   <% if @property_exist == nil %>
+   <div class="columns large-12 panel white col-height">
+   <div class="newfont5"> There is no property yet, create one now! </div>
+   </div>
+   <% end %>
+
+  <div class="columns large-12 panel white col-height">
+    <h2 class="newfont4"> Create a property for rent! </h2>
+      <form method=post action="/properties/new">
+        <div class="newfont6"> Property name: </div>
+        <input type=text placeholder="Property name!" name="name"><br>
+        <div class="newfont6"> Address & info: </div>
+        <input type=text placeholder="Where is your property?" name="info"><br>
+        <div class="newfont6"> Price: </div>
+        <input type=text placeholder="How much you are planning to rent for?" name="price"><br>
+        <input type=submit class="large success button" value="Create!">
+      </form>
+</div>

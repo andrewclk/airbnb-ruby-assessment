@@ -1,0 +1,45 @@
+<div class="row panel">
+  <div class="columns large-12 panel pink2">
+  <h1 class="newfont4"><%= @property.name %> </h1>
+  <h4> <%= @property.info %> <div class="right newfont4"> <%= @property.price %> </div></h4>
+
+  </div>
+  <% @comments.reverse.each do |c| %>
+    <% if c.property_id == @property.id %>
+    <div class="columns large-6 panel white col-height">
+     <% @user = User.find(c.user_id) %>
+    <h5> <%= @user.name %>:</h5>
+
+    <h5> <%= c.comment %></h5>
+     <% if c.user_id == session[:user_id] %>
+            <div class="column small-8 large-10">
+            <h5>                                     </h5> </div>
+                <div class="column small-2 large-1">
+              <form method=get action=/comments/<%= c.id %>/edit>
+                <input type="hidden" id=<%= c.id %> name="comment_id" value=<%= c.id %> />
+                <button class="xtiny success button"> E </button><br>
+              </form>
+              </div>
+              <div class="column small-2 large-1">
+              <form method=post action=/comments/<%= c.id %>/delete>
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="hidden" id=<%= c.id %> name="comment_id" value=<%= c.id %> />
+                <button class="xtiny alert button"> X </button><br>
+              </form>
+              </div>
+              <% end %>
+    </div>
+
+     <% end %>
+  <% end %>
+
+<div class="columns large-12 panel white pink2">
+    <h2 class="newfont4"> Add a comment! </h2>
+      <form method=post action="/comments/new">
+        <input type="hidden" id=<%= @property.id %> name="property_id" value=<%= @property.id %> />
+        <div class="newfont6"> Comment: </div>
+        <input type=text placeholder="What do you think of this property?" name="comment"><br>
+        <input type=submit class="large success button" value="Comment">
+      </form>
+</div>
+</div>

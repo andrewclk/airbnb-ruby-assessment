@@ -1,8 +1,67 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Sinatra Framework</title>
+<head>
+
+  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script src="/js/application.js"></script>
+
+	<title>AirB2B</title>
 	</head>
-	<body>
+	<body class="adjust-top">
+	<div class= "fixed contain-to-grid sticky pink">
+ <nav class="top-bar pink">
+  <ul class="title-area">
+    <li class="name">
+      <h1 class= "pink"><a href="http://localhost:9393/">AirB2B</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <!-- <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li> -->
+  </ul>
+
+  <section class="top-bar-section pink">
+    <!-- Right Nav Section -->
+
+    <ul class="right">
+        <li class= "pink">
+        <% if session[:user_id] == nil %>
+            <a href="#login-box" class="login-window"><button class="tiny alert button" style='top: 0px'>
+              Login / Sign Up</button></a>
+        <% end %>
+        </li>
+        <li class= "pink"> <% if session[:user_id] != nil %>
+    <% user=User.find_by_id(session[:user_id]) %>
+        <h6 class="newfont3"> Hi, <%= user.name %></h6>
+      </li>
+      <li class= "pink">
+        <form method=post action=/user/logout>
+          <button class="button"> Logout! </button><br>
+        </form>
+        <% end %>
+      </li>
+
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class= "pink"> 
+        <a class= "pink" href="/user"><button class="button" style='top: 0px'>Home</button></a>
+              <li class="search">
+              <form>
+                <input type="search" name="search" placeholder="Find your rent here!">
+              </form>
+            </li>
+            <li class="has-button">
+              <a class="small info button" href="#">Not working do not click!</a>
+            </li>
+        </li>
+        </ul>
+  </section>
+</nav>
+</div>
 		<%= yield %>
 	</body>
 </html>
