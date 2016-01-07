@@ -16,7 +16,7 @@
  <nav class="top-bar pink">
   <ul class="title-area">
     <li class="name">
-      <h1 class= "pink"><a href="http://localhost:9393/">AirB2B</a></h1>
+      <h1 class= "pink"><a href="/"><h3><img src="http://www.rovignon.com/wp-content/uploads/2014/11/airbnb_logo_detail2.png" height="50" width="100"></h3></a></h1>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <!-- <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li> -->
@@ -48,7 +48,10 @@
     <!-- Left Nav Section -->
     <ul class="left">
       <li class= "pink"> 
+      <li>
         <a class= "pink" href="/user"><button class="button" style='top: 0px'>Home</button></a>
+        </li>
+        <% if session[:user_id] != nil %>
               <li class="search">
               <form>
                 <input type="search" name="search" placeholder="Find your rent here!">
@@ -57,10 +60,38 @@
             <li class="has-button">
               <a class="small info button" href="#">Not working do not click!</a>
             </li>
+             <% end %>
         </li>
         </ul>
   </section>
 </nav>
+</div>
+  <div id="login-box" class="login-popup">
+  
+  <div class="row panel">
+    <div class=" column large-9">
+    <h4 class="newfont4">Please sign up or login first to continue!</h4>
+    </div>
+    <div class=" column large-3">
+    <a href="#" class="close"><button class="tiny right alert button"> X </button></a>
+    </div>
+    <div class=" column large-6 panel white">
+    <h2>Sign up for an account!</h2>
+    <form method=post action=/signup>
+      <input type=text placeholder="Email" name="user[email]"><br>
+      <input type=password placeholder="Password" name="user[password]"></br>
+      <input type=submit class="button" value="Sign up">
+    </form>
+    </div>
+    <div class=" column large-6 panel white">
+    <h2>Login here!</h2>
+    <form method=post action=/login>
+      <input type=text placeholder="Email" name="user[email]"><br>
+      <input type=password placeholder="Password" name="user[password]"></br>
+      <input type=submit class="alert button" value="Login!">
+    </form>
+    </div>
+    </div>
 </div>
 		<%= yield %>
 	</body>

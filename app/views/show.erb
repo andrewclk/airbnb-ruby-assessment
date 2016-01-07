@@ -4,6 +4,8 @@
   <h4> <%= @property.info %> <div class="right newfont4"> <%= @property.price %> </div></h4>
 
   </div>
+
+  
   <% @comments.reverse.each do |c| %>
     <% if c.property_id == @property.id %>
     <div class="columns large-6 panel white col-height">
@@ -32,6 +34,8 @@
 
      <% end %>
   <% end %>
+ 
+
 
 <div class="columns large-12 panel white pink2">
     <h2 class="newfont4"> Add a comment! </h2>

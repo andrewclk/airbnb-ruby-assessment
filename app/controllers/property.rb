@@ -7,11 +7,12 @@ get '/properties' do
 end
 
 get '/properties/:id/show' do
-	@property = Property.find(params[:property_id])
+	@property = Property.find(params[:id])
 	@user = User.all
 	@comments = Comment.all
 	erb :"/show"
 end
+
 
 
 post '/properties/new' do

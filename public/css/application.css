@@ -9869,20 +9869,6 @@ th.hide-for-touch {
   min-height: 360px;
 }
 
-.upvote-box {
-  /*border-style: solid;*/
-  max-width: 80px;
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: normal;
-  /*margin-bottom: 1.25rem;*/
-  padding: 0.475rem 0.475rem 0.475rem 0.475rem;
-  position: relative;
-  transition: opacity 300ms ease-out;
-  background-color: #c9c9c9;
-  color: #FFFFFF;
-}
-
 .adjust-top {
   padding-top: 40px;
 
@@ -9937,25 +9923,8 @@ th.hide-for-touch {
   border-color: #ffaea8;
 }
 
-.mutton {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0;
-  border-style: solid;
-  border-width: 0;
-  cursor: pointer;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  font-weight: normal;
-  line-height: normal;
-  margin: 0 0 1.25rem;
+.logo {
   position: relative;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  padding: 1rem 2rem 1.0625rem 2rem;
-  font-size: 1rem;
-  background-color: transparent;
-  border-color: transparent;
-  color: #FFFFFF;
-  transition: background-color 300ms ease-out;
+  margin-left: 280px;
+  padding-bottom: 20px;
 }

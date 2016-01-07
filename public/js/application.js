@@ -31,4 +31,16 @@ $(document).ready(function() {
         }); 
         return false;
     });
+
+    $(".comment").click(function(event){
+   $.ajax({
+         url: $('.comment').attr('action'), 
+         datatype: "JSON",
+         method: "POST"
+     })
+     .success(function(result){    
+     $("#comment").html(result);
+     });
+     event.preventDefault()
+ }); 
 });
